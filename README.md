@@ -4,12 +4,12 @@ Please study the slides for more details.
 Link: https://goo.gl/FEm6gR
 
 
-- step 0: Download the ruster.csv from Github Classroom.
+- step 0: Download the classroom_roster.csv from Github Classroom.
     - example
     https://classroom.github.com/classrooms/61244606-ntu-machine-learning-spring-2020/roster.csv
     
 
-- step 1: Create student-list.
+- step 1: Create student_list_csv.
     - usage:
     ``` 
     $ bash make_student_list <roster_csv> <student_list_csv>
@@ -19,7 +19,7 @@ Link: https://goo.gl/FEm6gR
     $ bash make_student_list ../classroom_roster.csv ../student_list.csv
     ```
 
-- step 2: Download Kaggle leaderboard scores. (Optional.)
+- step 2: Get Kaggle leaderboard scores. (Optional.)
     - usage
     ```
     $ python get_kaggle_score.py -c <competition> -l <student_list_csv> -o <output_csv>
