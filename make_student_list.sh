@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ "$#" -ne 2 ]; then
     echo "Usage:"
-    echo "$0 <roster_csv> <out_csv>"
+    echo "    bash $0 <roster_csv> <student_list_csv>"
     echo ""
     echo "Description:"
     echo "    Make student-list csv."

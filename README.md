@@ -29,3 +29,20 @@ Link: https://goo.gl/FEm6gR
     $ python get_kaggle_score.py -c ml2020spring-hw1 -l ../student_list.csv -o /tmp/kaggle_hw1_score.csv
     ```
 
+- step 3: Setup a environment for a specific homework.
+    - edit config
+    - run setup.sh
+    ```
+    bash setup.sh
+    ```
+
+- step 4: Run main.sh
+    - usage:
+    ```
+    $ bash main.sh <student_list_csv> <git_pull_or_not>
+    ```
+    - example:
+    ```
+    $ bash main.sh ../student_list.csv true
+    ```
+    
