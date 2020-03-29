@@ -6,18 +6,17 @@ Link: https://goo.gl/FEm6gR
 
 - step 0: Download the ruster.csv from Github Classroom.
     - example
-    ```
     https://classroom.github.com/classrooms/61244606-ntu-machine-learning-spring-2020/roster.csv
-    ```
+    
 
 - step 1: Create student-list.
     - usage:
     ``` 
-    $ bash make_student_list <ruster_csv> <student_list_csv>
+    $ bash make_student_list <roster_csv> <student_list_csv>
     ```
     - example:
     ```
-    $ bash make_student_list ../ruster.csv ../student_list.csv
+    $ bash make_student_list ../classroom_roster.csv ../student_list.csv
     ```
 
 - step 2: Download Kaggle leaderboard scores. (Optional.)
