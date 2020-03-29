@@ -1,11 +1,17 @@
 # This file is for configure setting of homework
 
 # github setting
-course=ML2017
+course=ML2020
 branch=master
 hw=hw1
-deadline="2017-03-24 12:00:00"
+deadline="2020-03-25 12:00:00"
 only_report=false
-threads=8
-save_dir=/home_local/roylu/ # absolute path
+threads=4
+save_dir=/workspace # absolute path
 limit_time=600
+
+# if using github classroom
+use_classroom=true
+classroom_domain="NTU-speech-lab" # s.t. github.com/<classroom_domain>.
+prefix=hw1
+

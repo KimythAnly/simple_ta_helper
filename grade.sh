@@ -15,28 +15,40 @@ fi
 . github_account
 . program_config
 
+if [ "$use_classroom" == "true" ]; then
+    repo_name="github.com/$classroom_domain/$prefix-$repo_name.git"
+fi
 
-cd ./$course/$hw/code/
+echo "Github repo: $repo_name"
+echo "Git pull: $git_pull"
+
 
 if [ "$delay_time" != "" ]; then
     deadline="$delay_time"
 fi
 
+
+# Export environment parameters
+# It will be also used in child process, "run.sh" and "eval.sh"
+export MAIN_DIR=$save_dir/$course/$hw
+export STU_ID=$stu_id
+
+
 ### git ###
-if [ "$git_pull" = true ]; then
-    [ -d ${stu_id,,} ] && rm -rf ${stu_id,,}
-    mkdir ${stu_id,,}
-    cd ${stu_id,,}
+if [ "$git_pull" == "true" ]; then
+    [ -d $MAIN_DIR/code/$STU_ID ] && rm -rf $MAIN_DIR/code/$STU_ID
+    mkdir -p $MAIN_DIR/code/$STU_ID
+    cd $MAIN_DIR/code/$STU_ID
 
     git init
     git remote add origin -f https://$github_username:$github_password@$repo_name
     git config core.sparseCheckout true
     if [ "$only_report" = true ]; then
-        echo "/$hw/*.pdf" >> .git/info/sparse-checkout
-        echo "/${hw,,}/*.pdf" >> .git/info/sparse-checkout
+        echo "/*.pdf" >> .git/info/sparse-checkout
+        # echo "/${hw,,}/*.pdf" >> .git/info/sparse-checkout
     else
-        echo "/$hw/*" >> .git/info/sparse-checkout
-        echo "/${hw,,}/*" >> .git/info/sparse-checkout
+        echo "/*" >> .git/info/sparse-checkout
+        # echo "/${hw,,}/*" >> .git/info/sparse-checkout
     fi
 
     #git pull origin $branch
@@ -50,37 +62,29 @@ if [ "$git_pull" = true ]; then
     # checkout to latest HEAD before deadline
     git checkout `git rev-list -n 1 --before="$deadline" $branch`
 else
-    cd ${stu_id,,}
+    cd $MAIN_DIR/code/$STU_ID
 fi
 
 if [ "$only_report" != true ]; then
-    if [ -d $hw ]; then 
-        cd $hw 
-    elif [ -d ${hw,,} ]; then
-        cd ${hw,,}
-    fi
-
     # Create a tmp directory to copy student's homeword and TA grading files to this directory.
     tmp_grade_dir=$(mktemp -d)
-    trap "rm -rf $tmp_stu_dir" EXIT
+
+    export DATA_DIR=$tmp_grade_dir/data
+    export OUTPUT_DIR=$tmp_grade_dir/output
+    export SCORE=$tmp_grade_dir/score
+    export PROGRAM_DIR=$tmp_grade_dir/program
+    export STU_DIR=$tmp_grade_dir/$stu_id
+    
+    trap "rm -rf $tmp_grade_dir" EXIT
 
     # Copy all student's files and run.sh to tmp directory
-    mkdir $tmp_grade_dir/$stu_id
+    mkdir $STU_DIR
 
-    # Export environment parameters
-    # It will be also used in child process, "run.sh" and "eval.sh"
-    export DATA_DIR=$tmp_grade_dir/data/
-    export OUTPUT_DIR=$tmp_grade_dir/output/
-    export SCORE=$tmp_grade_dir/score
-    export PROGRAM_DIR=$tmp_grade_dir/program/
-    export STU_DIR=$tmp_grade_dir/$stu_id/
-    export MAIN_DIR=$save_dir/$course/$hw
-    export STU_ID=$stu_id
 
     # Create a soft link to link data in tmp student's directory
     ln -s $MAIN_DIR/data $tmp_grade_dir
-
-    cp -rf $MAIN_DIR/code/$stu_id/$hw/* $STU_DIR
+    
+    cp -rf $MAIN_DIR/code/$STU_ID/* $STU_DIR
     cp -rf $MAIN_DIR/program $PROGRAM_DIR
 
     # Change working directory to student's tmp directory
