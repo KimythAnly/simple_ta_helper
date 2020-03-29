@@ -5,6 +5,10 @@ Link: https://goo.gl/FEm6gR
 
 
 - step 0: Download the ruster.csv from Github Classroom.
+    - example
+    ```
+    https://classroom.github.com/classrooms/61244606-ntu-machine-learning-spring-2020/roster.csv
+    ```
 
 - step 1: Create student-list.
     - usage:
