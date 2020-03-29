@@ -75,21 +75,19 @@ if [ "$only_report" != true ]; then
     export PROGRAM_DIR=$tmp_grade_dir/program
     export STU_DIR=$tmp_grade_dir/$stu_id
     
-    trap "rm -rf $tmp_grade_dir" EXIT
-
-    # Copy all student's files and run.sh to tmp directory
-    mkdir $STU_DIR
+    # trap "rm -rf $tmp_grade_dir" EXIT
 
 
     # Create a soft link to link data in tmp student's directory
     ln -s $MAIN_DIR/data $tmp_grade_dir
     
-    cp -rf $MAIN_DIR/code/$STU_ID/* $STU_DIR
-    cp -rf $MAIN_DIR/program $PROGRAM_DIR
+    # Copy all student's files and run.sh to tmp directory
+    cp -R $MAIN_DIR/code/$STU_ID $tmp_grade_dir
+    cp -R $MAIN_DIR/program $PROGRAM_DIR
 
     # Change working directory to student's tmp directory
     cd $STU_DIR
-
+    
     mkdir -p $OUTPUT_DIR
     touch $SCORE
 
