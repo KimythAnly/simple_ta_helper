@@ -28,7 +28,7 @@ Link: https://goo.gl/FEm6gR
     or
     ```
     $ # get scores from all team-submissions
-    $ python get_kaggle_score_submission.py -c <competition> -l <student_list_csv> -o <output_csv> -p <cpus>
+    $ python get_kaggle_score_submission.py -c <competition> -l <student_list_csv> -o <output_csv> -p <cpus> -b <browser>
     ```
     - example:
     ```

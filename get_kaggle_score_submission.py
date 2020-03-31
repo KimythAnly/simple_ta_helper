@@ -14,6 +14,7 @@ def get_args():
     parser.add_argument('--student_list', '-l', help='Input student-list csv. The format is <student_id>,<some_text> each line.', type=str, default='../student_list.csv')
     parser.add_argument('--cpus', '-p', help='Number of cpus for multiprocessing.', type=int, default=4)
     parser.add_argument('--output', '-o', help='Output csv. The format is <id>,<public_score_1>,<private_score_1>,<public_score_2>,<private_score_2> each line. <id> is <student_id> if student_list is specified, otherwise, it is the teamName in the competition.', type=str, default='/tmp/kaggle_scores.csv')
+    parser.add_argument('--browser', '-b', help='[chrome/firefox/safari]', default='chrome')
     return parser.parse_args()
 
 def partial_fetch_teams(url, params, start_index, step, cookies):
@@ -33,7 +34,7 @@ def partial_fetch_teams(url, params, start_index, step, cookies):
 
 def fetch_teams(competition_id_or_name):
     params = {}
-    cj = browsercookie.chrome()
+    cj = eval('browsercookie.{}()'.format(args.browser))
     cj_dict = requests.utils.dict_from_cookiejar(cj)
     url = 'https://www.kaggle.com/c/{}/teams.json'.format(competition_id_or_name)
     i = 1
