@@ -38,6 +38,7 @@ Link: https://goo.gl/FEm6gR
     ```
     $ python get_kaggle_score_submission.py -c ml2020spring-hw1 -l ../student_list.csv -o /tmp/kaggle_hw1_score.csv -p 8
     ```
+    - Note: If it fails using chrome cookies, run chrome with `--password-store=basic`.
 
 - step 3: Setup a environment for a specific homework.
     - edit config
@@ -46,7 +47,7 @@ Link: https://goo.gl/FEm6gR
     bash setup.sh
     ```
 
-- step 4: Run main.sh
+- step 4: Run main.sh (FIXME)
     - usage:
     ```
     $ bash main.sh <student_list_csv> <git_pull_or_not>
