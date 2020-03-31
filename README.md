@@ -19,14 +19,24 @@ Link: https://goo.gl/FEm6gR
     $ bash make_student_list ../classroom_roster.csv ../student_list.csv
     ```
 
-- step 2: Get Kaggle leaderboard scores. (Optional.)
-    - usage
+- step 2: Get Kaggle leaderboard scores. (Optional.) One can get the scores directly from the kaggle leaderboard or get the scores from all submissions.
+    - usage 
     ```
+    $ # directly get scores from leaderboard
     $ python get_kaggle_score.py -c <competition> -l <student_list_csv> -o <output_csv>
+    ```
+    or
+    ```
+    $ # get scores from all team-submissions
+    $ python get_kaggle_score_submission.py -c <competition> -l <student_list_csv> -o <output_csv> -p <cpus>
     ```
     - example:
     ```
     $ python get_kaggle_score.py -c ml2020spring-hw1 -l ../student_list.csv -o /tmp/kaggle_hw1_score.csv
+    ```
+    or 
+    ```
+    $ python get_kaggle_score_submission.py -c ml2020spring-hw1 -l ../student_list.csv -o /tmp/kaggle_hw1_score.csv -p 8
     ```
 
 - step 3: Setup a environment for a specific homework.

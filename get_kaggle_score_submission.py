@@ -117,3 +117,4 @@ if __name__ == '__main__':
                 s1, s2, s3, s4 = 0, 0, 0, 0
 
             f.write('{},{},{},{},{}\n'.format(k, s1, s2, s3, s4))
+    print('Save outupt to {}'.format(args.output))
