@@ -64,7 +64,7 @@ def get_teams(competition_id_or_name, student_list_csv=''):
                 student_id = sp[0]
                 if student_id in student_list.keys():
                     if student_id in ret.keys():
-                        print('Student {} has multiple id!'.format(student_id))
+                        print('Student {} has multiple accounts!'.format(student_id))
                     else:
                         ret[student_id] = team['id']
         else:
