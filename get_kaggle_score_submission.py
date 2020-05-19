@@ -41,7 +41,7 @@ def fetch_teams(competition_id_or_name):
     teams = []
     func = partial(partial_fetch_teams, url=url, params=copy.deepcopy(params), cookies=copy.deepcopy(cj_dict))
     results = Parallel(n_jobs=args.cpus)(
-            delayed(func)(start_index=i+1, step=args.cpus) for i in tqdm.tqdm(range(args.cpus)))
+                delayed(func)(start_index=i+1, step=args.cpus) for i in tqdm.tqdm(range(args.cpus)))
     teams = []
     for t in results:
         teams += t
@@ -88,6 +88,13 @@ def fetch_submissions(competition_id_or_name, team, team_id):
             rest.append({'private': submission['privateScore'],
                         'public': submission['publicScore']})
     if len(ret) != 2:
+        for k in rest:
+            if 'public' not in k.keys():
+                import pdb; pdb.set_trace()
+            elif k['public'] is None:
+                import pdb; pdb.set_trace()
+            else:
+                pass
         rest = sorted(rest, key=lambda k: float(k['public']))
         ret = (ret + rest)[:2]
     assert len(ret) <= 2, 'Student {} has more than two submissions being selected.'.format(submissions[0]['teamName'])

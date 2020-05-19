@@ -12,11 +12,11 @@ Link: https://goo.gl/FEm6gR
 - step 1: Create student_list_csv.
     - usage:
     ``` 
-    $ bash make_student_list <roster_csv> <student_list_csv>
+    $ bash make_student_list.sh <roster_csv> <student_list_csv>
     ```
     - example:
     ```
-    $ bash make_student_list ../classroom_roster.csv ../student_list.csv
+    $ bash make_student_list.sh ../classroom_roster.csv ../student_list.csv
     ```
 
 - step 2: Get Kaggle leaderboard scores. (Optional.) One can get the scores directly from the kaggle leaderboard or get the scores from all submissions.
