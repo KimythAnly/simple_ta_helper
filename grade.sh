@@ -1,30 +1,29 @@
 #! /bin/bash 
 
-if [ "$#" -eq 2 ]; then
+if [ "$#" -eq 4 ]; then
     stu_id=$(echo $1 | cut -d' ' -f1)
     repo_name=$(echo $1 | cut -d' ' -f2)
     git_pull=$2
+    github_username=$3
+    github_password=$4
 else
     stu_id=$1
     repo_name=$2
     git_pull=$3
     delay_time=$4
+    github_username=$5
+    github_password=$6
 fi
 
 . config
 #. github_account
 . program_config
 
-echo -n "github username:"
-read github_username
-
-echo -n "password:"
-read -s github_password
-
 if [ "$use_classroom" == "true" ]; then
     repo_name="github.com/$classroom_domain/$prefix-$repo_name.git"
 fi
 
+echo ""
 echo "Github repo: $repo_name"
 echo "Git pull: $git_pull"
 

@@ -15,5 +15,17 @@ fi
 stu_git_list=$1
 git_pull_bool=$2
 
-cat $stu_git_list | awk -F"," '{ print $1,$2 }' | parallel --gnu --progress -j $threads bash grade.sh \{\} $git_pull_bool
+if [ -f "github_account" ]
+then
+    echo "Use github_account"
+    . github_account
+else
+    echo -n "github_username:"
+    read github_username
+    echo -n "password:"
+    read -s github_password
+fi
 
+echo $github_username
+#cat $stu_git_list | awk -F"," '{print $1, $2}'
+cat $stu_git_list | awk -F"," '{ print $1,$2 }' | parallel --gnu --progress -j $threads "bash grade.sh {} $git_pull_bool ${github_username} ${github_password}"
