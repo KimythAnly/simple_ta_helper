@@ -12,8 +12,14 @@ else
 fi
 
 . config
-. github_account
+#. github_account
 . program_config
+
+echo -n "github username:"
+read github_username
+
+echo -n "password:"
+read -s github_password
 
 if [ "$use_classroom" == "true" ]; then
     repo_name="github.com/$classroom_domain/$prefix-$repo_name.git"
