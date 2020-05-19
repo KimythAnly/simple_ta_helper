@@ -6,7 +6,7 @@ Link: https://goo.gl/FEm6gR
 
 - step 0: Download the classroom_roster.csv from Github Classroom.
     - example
-    https://classroom.github.com/classrooms/61244606-ntu-machine-learning-spring-2020/roster.csv
+    https://classroom.github.com/classrooms/61244606-ntu-machine-learning-spring-2020/roster#download-csv-modal
     
 
 - step 1: Create student_list_csv.
