@@ -48,6 +48,9 @@ Link: https://goo.gl/FEm6gR
     ```
 
 - step 4: Run main.sh (FIXME)
+    - requirements:
+        - parallel
+        - dos2unix
     - usage:
     ```
     $ bash main.sh <student_list_csv> <git_pull_or_not>
