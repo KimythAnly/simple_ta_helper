@@ -38,7 +38,7 @@ Link: https://goo.gl/FEm6gR
     ```
     $ python get_kaggle_score_submission.py -c ml2020spring-hw1 -l ../student_list.csv -o /tmp/kaggle_hw1_score.csv -p 8
     ```
-    - Note: If it fails using chrome cookies, run chrome with `--password-store=basic`.
+    - Note: You should login as the host of the competition to run the second code.  If it fails using chrome cookies, run chrome with `--password-store=basic`.
 
 - step 3: Setup a environment for a specific homework.
     - edit config
