@@ -3,9 +3,10 @@
 # github setting
 course=ML2020
 branch=master
-hw=hw1
-deadline="2020-03-25 12:00:00"
+hw=hw9
+deadline="2020-05-22 00:00:00"
 only_report=false
+only_clone=true
 threads=4
 save_dir=/workspace # absolute path
 limit_time=600
@@ -13,5 +14,5 @@ limit_time=600
 # if using github classroom
 use_classroom=true
 classroom_domain="NTU-speech-lab" # s.t. github.com/<classroom_domain>.
-prefix=hw1
+prefix=hw9
 

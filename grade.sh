@@ -15,6 +15,8 @@ else
     github_password=$6
 fi
 
+echo $#
+
 . config
 #. github_account
 . program_config
@@ -70,6 +72,10 @@ else
     cd $MAIN_DIR/code/$STU_ID
 fi
 
+if [ "$only_clone" = true ]; then
+    exit
+fi
+
 if [ "$only_report" != true ]; then
     # Create a tmp directory to copy student's homeword and TA grading files to this directory.
     tmp_grade_dir=$(mktemp -d)
@@ -80,7 +86,7 @@ if [ "$only_report" != true ]; then
     export PROGRAM_DIR=$tmp_grade_dir/program
     export STU_DIR=$tmp_grade_dir/$stu_id
     
-    # trap "rm -rf $tmp_grade_dir" EXIT
+    trap "rm -rf $tmp_grade_dir" EXIT
 
 
     # Create a soft link to link data in tmp student's directory
