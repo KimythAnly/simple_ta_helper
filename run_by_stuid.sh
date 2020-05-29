@@ -19,6 +19,7 @@ stu_id=$1 # stu_id must be above config
 
 . config
 . program_config
+. github_account 
 
 if [ "$3" != "" ]; then
     git_pull=true
@@ -39,7 +40,7 @@ echo "==========================================================================
 echo
 echo
 
-./grade.sh ${stu_id,,} $repo_name $git_pull "$delay_time"
+./grade.sh ${stu_id,,} $repo_name $git_pull "$delay_time" $github_username $github_password
 
 cd $save_dir/$course/$hw/code/${stu_id,,}
 [ -d $hw ] && cd $hw 
@@ -53,6 +54,12 @@ echo
 
 echo "=============================Error for eval.sh============================="
 cat $save_dir/$course/$hw/err2/${stu_id,,}
+
+echo
+echo
+
+echo "=============================      Score      ============================="
+cat $save_dir/$course/$hw/score/${stu_id,,}
 
 echo
 echo

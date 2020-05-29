@@ -68,6 +68,11 @@ if [ "$git_pull" == "true" ]; then
 
     # checkout to latest HEAD before deadline
     git checkout `git rev-list -n 1 --before="$deadline" $branch`
+
+    if [ `date -d "${deadline}UTC+8" +%s` -lt `date -d $(git show --format=%cI -s) +%s` ]; then
+	echo "This commit is ahead the due date."
+	rm ./* -rf
+    fi
 else
     cd $MAIN_DIR/code/$STU_ID
 fi
@@ -120,3 +125,4 @@ if [ "$only_report" != true ]; then
     cp -f $SCORE $MAIN_DIR/score/$stu_id
 
 fi
+
