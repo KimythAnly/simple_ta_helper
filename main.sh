@@ -15,7 +15,7 @@ fi
 stu_git_list=$1
 git_pull_bool=$2
 
-if [ git_pull_bool = true ]
+if [ $git_pull_bool = true ]
 then
     if [ -f "github_account" ]
     then
